@@ -1,0 +1,434 @@
+/* 
+******************************************************************
+**********  COMPILADORES_TRABALHO_1 ******************************
+**********  Author: Anne Almeida e Caio Benedito *****************
+****************************************************************** 
+*/
+options
+{
+    LOOKAHEAD= 1;
+    CHOICE_AMBIGUITY_CHECK = 2;
+    OTHER_AMBIGUITY_CHECK = 1;
+    STATIC = true;
+    DEBUG_PARSER = false;
+    DEBUG_LOOKAHEAD = false;
+    DEBUG_TOKEN_MANAGER = false;
+    ERROR_REPORTING = true;
+    JAVA_UNICODE_ESCAPE = false;
+    UNICODE_INPUT = false;
+    IGNORE_CASE = false;
+    USER_TOKEN_MANAGER = false;
+    USER_CHAR_STREAM = false;
+    BUILD_PARSER = true;
+    BUILD_TOKEN_MANAGER = true;
+    SANITY_CHECK = true;
+	FORCE_LA_CHECK = false;
+}
+PARSER_BEGIN (trabalho_token)
+
+public class trabalho_token
+{
+	public static void main( String[] args )throws ParseException
+	{
+		try 
+		{
+			trabalho_token analizador = new trabalho_token (System.in);
+			analizador.Programa() ; 
+		}
+		catch (ParseException e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("Analisador: erro encontrado na analise");
+		
+	}
+}}
+PARSER_END(trabalho_token)
+
+<*> SKIP: {
+  < " " | "\t" | "\r" | "\n" | "\r\n" >
+| <"//" (~["\n","\r"])* ("\n"|"\r"|"\r\n") >
+| <"/*"(~["/"])*  "*""/" >
+}
+TOKEN:
+{
+	<PROGRAMA: "Program " > {System.out.println("Program -> "+image);}
+	| <IF: "if " >{System.out.println("IF -> "+image);}
+	| <ELSE:"else " >{System.out.println("ELSE -> "+image);}
+	| <ELSEIF:"else if " >{System.out.println("ELSE IF -> "+image);}
+	| <FOR:"for " >{System.out.println("for -> "+image);}
+	| <SWITCH:"ialternativa " >{System.out.println("SWITCH -> "+image);}
+	| <CASE:"Case " >{System.out.println("CASE -> "+image);}
+	| <BREAK:"itermina " >{System.out.println("BREAK -> "+image);}
+	| <DEFAUL:"ipredef " >{System.out.println("DEFAUL -> "+image);}
+	| <DO:"Do " >{System.out.println("DO -> "+image);}
+	| <WHILE:"repeat " >{System.out.println("WHILE -> "+image);}
+	| <WRITELN:"writeln"|"Writeln" >{System.out.println("WRITELN -> "+image);}
+	| <WRITE:"write"|"Write" >{System.out.println("WRITE -> "+image);}
+	| <READ:"read"|"Read" >{System.out.println("READ -> "+image);}
+	| <READLN:"readln"|"Readln" >{System.out.println("READLN -> "+image);}
+	
+	
+	| <ARRAY:"array " >{System.out.println("ARRAY -> "+image);}
+	| <ASM:"asm" >{System.out.println("ASM -> "+image);}
+	| <BEGIN:"begin"|"Begin" >{System.out.println("BEGIN -> "+image);}
+	| <CONST:"const " >{System.out.println("CONST -> "+image);}
+	| <CONSTRUCTOR:"constructor " >{System.out.println("CONSTRUCTOR -> "+image);}
+	| <DESTRUCTOR:"destructor " >{System.out.println("DESTRUCTOR -> "+image);}
+	| <DIV:"div " >{System.out.println("DIV -> "+image);}
+	| <DOWNTO:"downto " >{System.out.println("DOWNTO -> "+image);}
+	| <END:"end"|"End" >{System.out.println("END -> "+image);}
+	| <FILE:"file" >{System.out.println("FILE -> "+image);}
+	| <FUNCTION:"function " >{System.out.println("FUNCTION -> "+image);}
+	
+	| <GOTO: "goto" >{System.out.println("GOTO -> "+image);}
+	| <IMPLENTATION:"implentation" >{System.out.println("IMPLENTATION -> "+image);}
+	| <IN:"in" >{System.out.println("IN -> "+image);}
+	| <INHERITED:"inherited" >{System.out.println("INHERITED -> "+image);}
+	| <INLINE:"inline" >{System.out.println("INLINE -> "+image);}
+	| <INTERFACE:"interface" >{System.out.println("INTERFACE -> "+image);}
+	| <LABEL:"label" >{System.out.println("LABEL -> "+image);}
+	| <MOD:"mod" >{System.out.println("MOD -> "+image);}
+	| <NIL:"nil" >{System.out.println("NIL -> "+image);}
+	| <NOT:"not" >{System.out.println("NOT -> "+image);}
+	| <OBJECT:"object" >{System.out.println("OBJECT -> "+image);}
+	| <OF:"of" >{System.out.println("OF -> "+image);}
+	
+	| <OPERATOR: "operator" >{System.out.println("OPERATOR -> "+image);}
+	| <PACKED:"packed" >{System.out.println("PACKED -> "+image);}
+	| <PROCEDURE:"procedure" >{System.out.println("PROCEDURE -> "+image);}
+	| <RECORD:"record" >{System.out.println("RECORD -> "+image);}
+	| <REINTRODUCE:"reintroduce" >{System.out.println("REINTRODUCE -> "+image);}
+	| <REPEAT:"repeat" >{System.out.println("REPEAT -> "+image);}
+	| <SELF:"self" >{System.out.println("SELF -> "+image);}
+	| <SET:"set" >{System.out.println("SET -> "+image);}
+	| <SHL:"shl" >{System.out.println("SHL -> "+image);}
+	| <SHR:"shr" >{System.out.println("SHR -> "+image);}
+	| <STRING:"string" >{System.out.println("STRING -> "+image);}
+	
+	| <THEN: "then" >{System.out.println("THEN -> "+image);}
+	| <TO:"to" >{System.out.println("TO -> "+image);}
+	| <TYPE:"type" >{System.out.println("TYPE -> "+image);}
+	| <UNIT:"unit" >{System.out.println("UNIT -> "+image);}
+	| <UNTIL:"until" >{System.out.println("UNTIL -> "+image);}
+	| <USES:"uses" >{System.out.println("USES -> "+image);}
+	| <VAR:"var" | "Var" |"VAR" >{System.out.println("VAR -> "+image);}
+	| <WITH:"with" >{System.out.println("WITH -> "+image);}
+	| <XOR:"xor" >{System.out.println("XOR -> "+image);}
+	| <AS:"as" >{System.out.println("AS -> "+image);}
+	| <CLASS:"class" >{System.out.println("CLASS -> "+image);}
+	| <DISPINTERFACE:"dispinterface" >{System.out.println("DISPINTERFACE -> "+image);}
+	
+	| <EXCEPT: "except" >{System.out.println("EXCEPT -> "+image);}
+	| <EXPORTS:"exports" >{System.out.println("EXPORT -> "+image);}
+	| <FINALIZATION:"finalization" >{System.out.println("FINALIZATION -> "+image);}
+	| <FINALLY:"finally" >{System.out.println("FINALLY -> "+image);}
+	| <INITIALIZATION:"initialization" >{System.out.println("INITIALIZATION -> "+image);}
+	| <IS:"is" >{System.out.println("IS -> "+image);}
+	| <LIBRAY:"libray" >{System.out.println("LIBRAY -> "+image);}
+	| <ON:"on" >{System.out.println("ON -> "+image);}
+	| <PROPERTY:"property" >{System.out.println("PROPERTY -> "+image);}
+	| <RAISE:"raise" >{System.out.println("RAISE -> "+image);}
+	| <RESOURCESTRING:"resourcestring" >{System.out.println("RESOURCESTRING -> "+image);}
+	| <THREADVAR:"threadvar" >{System.out.println("THREADVAR -> "+image);}
+	
+	| <TRY: "try" >{System.out.println("TRY -> "+image);}
+	| <ABSTRACT:"abstract " >{System.out.println("ABSTRACT -> "+image);}
+	| <ALIAS:"alias" >{System.out.println("ALIAS -> "+image);}
+	| <ASSEMBLER:"assembler" >{System.out.println("ASSEMBLER -> "+image);}
+	| <BITPACKED:"bitpacked" >{System.out.println("BITPACKED -> "+image);}
+	| <CDECL:"cdecl" >{System.out.println("CDECL -> "+image);}
+	| <CONTINUE:"continue" >{System.out.println("CONTINUE -> "+image);}
+	| <CPPDECL:"cppdecl" >{System.out.println("CPPDECL -> "+image);}
+	| <CVAR:"cvar" >{System.out.println("CVAR -> "+image);}
+	| <DEPRECATED:"deprecated" >{System.out.println("DEPRECATED -> "+image);}
+	| <DYNAMIC:"dynamic" >{System.out.println("DYNAMIC -> "+image);}
+	| <ENUMERATOR:"enumerator" >{System.out.println("ENUMERATOR -> "+image);}
+	
+	| <EXPERIMENTAL: "experimental" >{System.out.println("EXPERIMENTAL -> "+image);}
+	| <EXPORT:"export" >{System.out.println("EXPORT -> "+image);}
+	| <EXTERNAL:"external" >{System.out.println("EXTERNAL -> "+image);}
+	| <FAR:"far" >{System.out.println("FAR -> "+image);}
+	| <FAR16:"far16" >{System.out.println("FAR16 -> "+image);}
+	| <FORWARD:"forward" >{System.out.println("FORWARD -> "+image);}
+	| <GENERIC:"generic" >{System.out.println("GENERIC -> "+image);}
+	| <HELPER:"helper" >{System.out.println("HELPER -> "+image);}
+	| <IMPLEMENTS:"implements" >{System.out.println("IMPLEMENTS -> "+image);}
+	| <INDEX:"index" >{System.out.println("INDEX -> "+image);}
+	| <INTERRUPT:"interrupt" >{System.out.println("INTERRUPT -> "+image);}
+	| <IOCHECK:"iocheck" >{System.out.println("IOCHECK -> "+image);}
+	
+	| <LOCAL: "local" >{System.out.println("LOCAL -> "+image);}
+	| <MESSAGE:"message" >{System.out.println("MESSAGE -> "+image);}
+	| <NAME:"name" >{System.out.println("NAME -> "+image);}
+	| <NEAR:"near" >{System.out.println("NEAR -> "+image);}
+	| <NODEFAULT:"nodefault" >{System.out.println("NODEFAULT -> "+image);}
+	| <NORETURN:"noreturn" >{System.out.println("NORETURN -> "+image);}
+	| <NOSTACKFRAME:"nostackframe" >{System.out.println("NOSTACKFRAME -> "+image);}
+	| <OLDFPCCALL:"oldfpccall" >{System.out.println("OLDFPCCALL -> "+image);}
+	| <OTHERWISE:"otherwise" >{System.out.println("OTHERWISE -> "+image);}
+	| <OVERLOAD:"overload" >{System.out.println("OVERLOAD -> "+image);}
+	| <OVERRIDE:"override" >{System.out.println("OVERRIDE -> "+image);}
+	| <PASCAL:"pascal" >{System.out.println("PASCAL -> "+image);}
+	
+	| <PLATFORM: "platform" >{System.out.println("PLATFORM -> "+image);}
+	| <PRIVATE:"private" >{System.out.println("PRIVATE -> "+image);}
+	| <PROTECTED:"protected" >{System.out.println("PROTECTED -> "+image);}
+	| <PUBLIC:"public" >{System.out.println("PUBLIC -> "+image);}
+	| <PUBLISHED:"published" >{System.out.println("PUBLISHED -> "+image);}
+	| <REGISTER:"register" >{System.out.println("REGISTER -> "+image);}
+	| <RESULT:"result" >{System.out.println("RESULT -> "+image);}
+	| <SAFECALL:"safecall" >{System.out.println("SAFECALL -> "+image);}
+	| <SAVEREGISTERS:"saveregisters" >{System.out.println("SAVEREGISTERS -> "+image);}
+	| <SOFTFLOAT:"softfloat" >{System.out.println("SOFTFLOAT -> "+image);}
+	| <SPECIALIZE:"specialize" >{System.out.println("SPECIALIZE -> "+image);}
+	| <STATIC:"static" >{System.out.println("STATIC -> "+image);}
+	
+	| <STDCALL: "stdcall" >{System.out.println("STDCALL -> "+image);}
+	| <STORED:"stored" >{System.out.println("STORED -> "+image);}
+	| <STRICT:"strict" >{System.out.println("STRICT -> "+image);}
+	| <UNALIGNED:"unaligned" >{System.out.println("UNALIGNED -> "+image);}
+	| <UNIMPLEMENTED:"unimplemented" >{System.out.println("UNIMPLEMENTED -> "+image);}
+	| <VARARGS:"varargs" >{System.out.println("VARARGS -> "+image);}
+	| <VIRTUAL:"virtual" >{System.out.println("VIRTUAL -> "+image);}
+}
+
+TOKEN : 
+{ 
+	  <ASIGNACION : "="> {System.out.println("ATRIBUIÇÃO -> "+image);}
+	| <PLUS : "+" > {System.out.println("SOMA -> "+image);}
+	| <MINUS:"-">{System.out.println("SUBTRAÇÃO -> "+image);}
+	| <MULTIPLY:"*">{System.out.println("MULTIPLICAÇÃO -> "+image);}
+	| <DIVIDE:"/">{System.out.println("DIVISÃO -> "+image);}
+	| <INCR: "++" >{System.out.println("INCREMENTO -> "+image);}
+	| <DECR: "--" >{System.out.println("DECREMENTO -> "+image);}
+	
+}
+
+TOKEN:
+{
+      <LPAREN: "(" >{System.out.println("IPAREN -> "+image);}
+	| <RPAREN: ")" >{System.out.println("DPAREN -> "+image);}
+	| <LBRACE: "{" >{System.out.println("ILLAVE -> "+image);}
+	| <RBRACE: "}" >{System.out.println("DLLAVE -> "+image);}
+	| <ASPAS: "'" >{System.out.println("ASPAS -> "+image);}
+	| <LBRACKET: "[" >{System.out.println("LBRACKET -> "+image);}
+	| <RBRACKET: "]" >{System.out.println("RBRACKET -> "+image);}
+	| <SEMICOLON: ";" >{System.out.println("PONTO E VIRGULA -> "+image);}
+	| <COMMA: "," >{System.out.println("VIRGULA -> "+image);}
+	| <DOT: "." >{System.out.println("PONTO -> "+image);}
+	| <TDOT: ":" >{System.out.println("DOIS PONTOS -> "+image);}
+}
+TOKEN:
+{
+	  <EQ: "==" >{System.out.println("IGUALDADE -> "+image);}
+	| <LE: "<=" >{System.out.println("MENOR OU IGUAL -> "+image);}
+	| <GE: ">=" >{System.out.println("MAIOR OU IGUAL -> "+image);}
+	| <NE: "!=" >{System.out.println("DIFERENTE -> "+image);}
+	| <OR: "||" >{System.out.println("OR -> "+image);}
+	| <AND: "&&">{System.out.println("AND -> "+image);}
+}
+
+TOKEN:
+{
+   <COMENTARIO_SIMPLES: "//"(~["\r","\n"])*> {System.out.print("COMENTARIO_SIMPLES "+image+"\r\n");}
+|  <COMENTARIO_MULTIPLAS_LINHAS: "(*" (~["*"])* "*" ("*" | (~["*","c"] (~["*"])* "*"))* ")"> {System.out.print("COMENTARIO_MULTIPLAS_LINHAS "+image+"\r\n");}
+}
+
+
+TOKEN:
+{
+	  <TYPES:"String"|"Integer"|"Real"|"Boolean"|"Character"|"LongInt"|"ShortInt"|"Real"|"STRING"|"INTEGER"|"REAL"|"BOOLEAN"|"CHARACTER"|"LONGLONGINT"|"SHORTINT"|"REAL">{System.out.println("TYPEVAR -> "+image);}
+	| <NUMBER : (["1"-"9"]["0"-"9"])+ > {System.out.print("NUM "+image+"\r\n");}
+	|  <FLOAT_NUM:(((["0"-"9"])+"."(["0"-"9"])*)|((["0"-"9"])*"."(["0"-"9"])+)) 
+	| (((["0"-"9"])+ "."(["0"-"9"])* (["e","E"] (["+","-"])) (["0"-"9"])*)|((["0"-"9"])*"." (["0"-"9"])* (["e","E"] (["+","-"]))(["0"-"9"])+))  >  {System.out.print("FLOAT_NUM  -> "+image+"\r\n");}
+  // (["e","E"] (["+","-"]))? (["0"-"9"])
+//	| <STRING_LITERAL: "\"" ( ~["\"","\\","\n","\r"] | "\\" ( ["n","t","b","r","f","\\","\'","\""] | ["0"-"7"] (["0"-"7"])?  | ["0"-"3"] ["0"-"7"] ["0"-"7"] | ( ["\n","\r"] | "\r\n")))* "\"">
+	| <CHARACTER_LITERAL: "\'" (~["\'","\\","\n","\r"] | "\\" (["n","t","b","r","f","\\","\'","\""] | ["0"-"7"] (["0"-"7"])? | ["0"-"3"] ["0"-"7"] ["0"-"7"])) "\'">
+	//| <IDENTIFIER : ["a"-"z","A"-"Z"](["a"-"z","A"-"Z","0"-"9","_","!","/","."])*> {System.out.print("IDENTIFICADOR -> "+image+"\r\n");}
+	| <IDENTIFIER :(["a"-"z","A"-"Z","0"-"9","_","!","/"])*    > {System.out.print("IDENTIFICADOR -> "+image+"\r\n");}
+	//| <CADENA : (["_","!","/",".",":","?"])* >{System.out.print("CADENA -> "+image+"\r\n");}
+	//| <ID: ["a"-"z","A"-"Z"] ( ["a"-"z","A"-"Z","0"-"9"])*> {System.out.print("ID -> "+image+"\r\n");}
+	}
+
+
+TOKEN: {
+<QUOTED: 
+    "\"" 
+    (
+         "\\" ~[]     //any escaped character
+    |                 //or
+        ~["\"","\\"]  //any character except quote or backslash
+    )* 
+    "\"" > {System.out.print("QUOTED -> "+image+"\r\n");}
+}
+
+void Programa() :
+{System.out.print("function - Programa \n");}
+{
+	
+	
+	((<PROGRAMA>)
+	|(<IF>)
+	|(<ELSE>)
+	|(<ELSEIF>)
+	|(<FOR>)
+	|(<SWITCH>)
+	|(<CASE>)
+	|(<BREAK>)
+	|(<DEFAUL>)
+	|(<DO>)
+	|(<WHILE>)
+	|(<WRITELN>)
+	|(<WRITE>)
+	|(<READ>)
+	|(<READLN>)
+	|(<ARRAY>)
+	|(<ASM>)
+	|(<BEGIN>)
+	|(<CONST>)
+	|(<CONSTRUCTOR>)
+	|(<DESTRUCTOR>)
+	|(<DIV>)
+	|(<DOWNTO>)
+	|(<END>)
+	|(<FILE>)
+	|(<FUNCTION>)
+	|(<GOTO>)
+	|(<IMPLENTATION>)
+	|(<IN>)
+	|(<INHERITED>)
+	|(<INLINE>)
+	|(<INTERFACE>)
+	|(<LABEL>)
+	|(<MOD>)
+	|(<NIL>)
+	|(<NOT>)
+	|(<OBJECT>)
+	|(<OF>)
+	|(<OPERATOR>)
+	|(<PACKED>)
+	|(<PROCEDURE>)
+	|(<RECORD>)
+	|(<REINTRODUCE>)
+	|(<REPEAT>)
+	|(<SELF>)
+	|(<SET>)
+	|(<SHL>)
+	|(<SHR>)
+	|(<STRING>)
+	|(<THEN>)
+	|(<TO>)
+	|(<TYPE>)
+	|(<UNIT>)
+	|(<UNTIL>)
+	|(<USES>)
+	|(<VAR>)
+	|(<WITH>)
+	|(<XOR>)
+	|(<AS>)
+	|(<CLASS>)
+	|(<DISPINTERFACE>)
+	|(<EXCEPT>)
+	|(<EXPORTS>)
+	|(<FINALIZATION>)
+	|(<FINALLY>)
+	|(<INITIALIZATION>)
+	|(<IS>)
+	|(<LIBRAY>)
+	|(<ON>)
+	|(<PROPERTY>)
+	|(<RAISE>)
+	|(<RESOURCESTRING>)
+	|(<THREADVAR>)
+	|(<TRY>)
+	|(<ABSTRACT>)
+	|(<ALIAS>)
+	|(<ASSEMBLER>)
+	|(<BITPACKED>)
+	|(<CDECL>)
+	|(<CONTINUE>)
+	|(<CPPDECL>)
+	|(<CVAR>)
+	|(<DEPRECATED>)
+	|(<DYNAMIC>)
+	|(<ENUMERATOR>)
+	|(<EXPERIMENTAL>)
+	|(<EXPORT>)
+	|(<EXTERNAL>)
+	|(<FAR>)
+	|(<FAR16>)
+	|(<FORWARD>)
+	|(<GENERIC>)
+	|(<HELPER>)
+	|(<IMPLEMENTS>)
+	|(<INDEX>)
+	|(<INTERRUPT>)
+	|(<IOCHECK>)
+	|(<LOCAL>)
+	|(<MESSAGE>)
+	|(<NAME>)
+	|(<NEAR>)
+	|(<NODEFAULT>)
+	|(<NORETURN>)
+	|(<NOSTACKFRAME>)
+	|(<OLDFPCCALL>)
+	|(<OTHERWISE>)
+	|(<OVERLOAD>)
+	|(<OVERRIDE>)
+	|(<PASCAL>)
+	|(<PLATFORM>)
+	|(<PRIVATE>)
+	|(<PROTECTED>)
+	|(<PUBLIC>)
+	|(<PUBLISHED>)
+	|(<REGISTER>)
+	|(<RESULT>)
+	|(<SAFECALL>)
+	|(<SAVEREGISTERS>)
+	|(<SOFTFLOAT>)
+	|(<SPECIALIZE>)
+	|(<STATIC>)
+	|(<STDCALL>)
+	|(<STORED>)
+	|(<STRICT>)
+	|(<UNALIGNED>)
+	|(<UNIMPLEMENTED>)
+	|(<VARARGS>)
+	|(<VIRTUAL>)
+	|(<ASIGNACION>)
+	|(<PLUS>)
+	|(<MINUS>)
+	|(<MULTIPLY>)
+	|(<DIVIDE>)
+	|(<INCR>)
+	|(<DECR>)
+	|(<LPAREN>)
+	|(<RPAREN>)
+	|(<LBRACE>)
+	|(<RBRACE>)
+	|(<ASPAS>)
+	|(<LBRACKET>)
+	|(<RBRACKET>)
+	|(<SEMICOLON>)
+	|(<COMMA>)
+	|(<DOT>)
+	|(<TDOT>)
+	|(<EQ>)
+	|(<LE>)
+	|(<GE>)
+	|(<NE>)
+	|(<OR>)
+	|(<AND>)
+	|(<COMENTARIO_SIMPLES>)
+	|(<COMENTARIO_MULTIPLAS_LINHAS>)
+	|(<TYPES>)
+	|(<NUMBER>)
+	|(<FLOAT_NUM>)
+	|(<IDENTIFIER>)
+	|(<CADENA>))*<EOF>
+	
+}
+
+
+
+
